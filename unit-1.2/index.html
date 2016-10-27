@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+    <script src = 'app.js'></script>
+    <title>Document</title>
+
+</head>
+<body ng-app >
+
+<!--
+Use ng-model with a dropdown menu (select tag). Give the user the following four items to pick from - "Dogs", "Cats", "Dogs and Cats", "Neither".
+Display the user's choice in an h3. For example, if the user selects "Dogs", the h3 should say "I love dogs <3". -->
+
+
+
+
+    <input type="text" placeholder="What is your name?" id= 'name' >
+
+    <h1 >My name is:
+        <div id = 'whereNameGoes'> BoJack </div>
+    </h1>
+
+
+    <div>
+        <select ng-model='pets'>
+          <option value="Dogs">Dogs</option>
+          <option value="Cats">Cats</option>
+          <option value="Dogs and Cats">Dogs and Cats</option>
+          <option value="Neither">Neither</option>
+        </select>
+
+    <h3> I love {{ pets }}  </h3>
+    </div>
+
+</body>
+</html>

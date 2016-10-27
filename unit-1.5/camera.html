@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app='app'>
+    <h1>Camera Shop</h1>
+    <div ng-controller='cameraController'>
+
+        <select ng-model ='dropMenu' name="dropdown" id="">
+            <option value="price">Price</option>
+            <option value="rating">Rating</option>
+        </select>
+
+        <div ng-repeat = 'camera in cameraInput | orderBy: dropMenu'>
+            <ul>
+                <li>{{camera.title}}</li>
+                <li><img src="{{camera.image}}" alt="" style="width:170px;height:108px;"/></li>
+                <li>{{camera.rating}}</li>
+                <li >
+                    {{camera.price}}
+                    <ng-pluralize ng-class= '{yellow: camera.onSale}' count="camera.onSale"
+                                     when="{'true': 'Yes.',
+                                             'false': 'camera.price'}">
+                    </ng-pluralize>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

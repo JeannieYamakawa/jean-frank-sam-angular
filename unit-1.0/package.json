@@ -1,0 +1,11 @@
+{
+  "name": "unit-1.1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "protractor conf.js"
+  },
+  "author": "Jeannie Yamakawa <jkyamakawa@gmail.com>",
+  "license": "ISC"
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Angular App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+    <script src = 'app.js'charset="UTF-8"></script>
+</head>
+<body ng-app = 'myTodo'>
+            <div ng-controller = 'todo'>
+                <h1>booyah</h1>
+
+                <input type='text' ng-model = 'todoList.todoText'>
+
+
+                <input type = 'button' value = 'add' ng-click = 'addTodo(todoList.todoText)'>
+
+
+                    <ul>
+                        <!-- line below is like a forEach for each todo in todoList. ng-repeat goes on thing you're repeating -->
+                            <li  ng-repeat='todo in todoList.todos | orderBy: "text"'>
+                                <p ng-class = '{"done-true": todo.completed}'>
+
+                                {{ todo.text }}
+                                <!-- {{ todo.completed }} -->
+
+                                </p>
+                                <input type="checkbox"  ng-model = 'todo.completed' >
+
+                            </li>
+
+                    </ul>
+            </div>
+</body>
+</html>

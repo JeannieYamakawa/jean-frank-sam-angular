@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+
+    <body ng-app='app' ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']">
+
+        <div ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']" >
+            <!-- <ul>
+              <li ng-repeat='name in names'>
+                {{name}}
+               </li>
+            </ul> -->
+
+            <!-- <ul ng-repeat='name in names'>
+              <li>{{name}}</li>
+            </ul> -->
+
+        </div>
+        <div ng-init="suits=['&spades;', '&clubs;', '&hearts;', '&diams;']">
+
+            <ul>
+              <li ng-repeat='suit in suits'>
+                {{suit}}
+               </li>
+            </ul>
+
+                <div >
+                    <ul>
+                      <li ng-repeat="number in [1,1,2,5,6,9,9,9] track by $index">
+                        {{number}}
+                       </li>
+                    </ul>
+                </div>
+
+        </div>
+
+        <div ng-controller="MainController">
+            <h3>Example 1: Basic example of iterating through an array with primitives</h3>
+              <div ng-repeat="element in first">
+                {{ element }}
+              </div>
+
+             <h3>Find values in objects</h3>
+             <div ng-repeat='thing in second'>
+                 {{ thing.name }}: {{ thing.age }}
+             </div>
+
+
+
+
+<!--
+             <div ng-show='3 + 4 == 5'>
+               3 + 4 isn't 5, don't show
+             </div>
+
+             <div ng-show='3 + 4 == 7'>
+               3 + 4 is 7, do show
+             </div>
+
+             <div ng-hide='3 + 4 == 5'>
+                 3 + 4 isn't 5, don't hide
+             </div>
+
+             <div ng-hide='3 + 4 == 7'>
+               3 + 4 is 7, do hide
+             </div> -->
+
+
+<!-- Create a simple password validator like the one shown below.
+If the password is less than 6 characters, hide the submit button and show the error message.
+Otherwise, show the button and hide the error -->
+
+<form action="">
+
+
+
+
+    <input ng-model= 'password' type="text">
+    <!-- <h3>Your password is {{password.length}} characters long! </h3> -->
+
+        <div class ='red' >
+            <!-- <p >kdjalksjd</p> -->
+
+            <ng-pluralize ng-class='{"green": password.length>6}' count="password.length"
+                             when="{'0': 'Your password is 0 characters long.',
+                                     '1': 'Your password is 1 character long.',
+                                     'other': 'Your password is {} characters long.'}">
+            </ng-pluralize>
+        </div>
+
+    <input  ng-hide= password.length<6 type="submit">
+
+
+
+
+
+
+
+
+
+</form>
+
+
+
+        </div>
+
+
+
+
+    </body>
+
+</html>

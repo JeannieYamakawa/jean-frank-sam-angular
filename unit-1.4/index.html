@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+
+    <title>1.4</title>
+</head>
+<body ng-app>
+
+<div>{{this}}</div>
+
+
+
+<h3>{{3.14159265359 | currency: '€' }}</h3>
+
+
+<!-- Add a text input to a page that displays user input in all caps and all lowercase. You will need to use two of the other built-in filters1. Use the following gif as a reference: -->
+<input ng-model='stuff' id = 'said' type="text">
+
+<div>Yelling: {{ stuff | uppercase}}</div>
+<div>Whispering: {{ stuff | lowercase }}</div>
+
+
+{{3.14159265359 | number:3}}
+<br>
+{{3.14159265359 | number:6}}
+<br>
+{{3.14159265359 | number:1}}
+
+
+<!-- Create a drop down menu where the user can select how many digits to round pi to. BONUS: Find out how to pluralize "digit" correctly. Angular comes with a built-in way of pluralizing things! -->
+<h2>How many digits of pi do you want?</h2>
+
+
+
+    <select ng-model = 'pi'>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+    </select>
+
+<h2>Here you go! The first {{ pi }} digit of pi!</h2>
+<h1> {{3.14159265359 | number: pi }} </h1>
+
+
+<!-- Create a simple tip calculator using the Angular concepts that we've covered so far (and nothing more advanced).
+A user can enter a meal price into an input, then select a percentage to tip from a dropdown menu.
+Display the resulting tip at the bottom of the page. Check out the following gif to see how it should work. -->
+
+
+
+
+<h2>How much did your meal cost?</h2>
+
+<input ng-model='subtotal' type="number" >
+
+<h2>How much do you want to tip?</h2>
+
+    <select ng-model = 'tip'>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+    </select>
+
+<h1>Subtotal: {{  subtotal | currency: "$" }} </h1>
+<h1>Tip: {{  subtotal * (0.01 * tip) | currency: "$" }} </h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
