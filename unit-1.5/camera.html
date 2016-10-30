@@ -19,19 +19,36 @@
         </select>
 
         <div ng-repeat = 'camera in cameraInput | orderBy: dropMenu'>
-            <ul>
-                <li>{{camera.title}}</li>
-                <li><img src="{{camera.image}}" alt="" style="width:170px;height:108px;"/></li>
-                <li>{{camera.rating}}</li>
-                <li >
-                    {{camera.price}}
-                    <ng-pluralize ng-class= '{yellow: camera.onSale}' count="camera.onSale"
-                                     when="{'true': 'Yes.',
-                                             'false': 'camera.price'}">
-                    </ng-pluralize>
 
+
+
+            <ul class= 'singleCamera'>
+
+                <h2><li > <strong>{{camera.title}}</strong></li></h2>
+                <li><img src="{{camera.image}}" alt="" style="width:170px;height:130px;"/></li>
+                <li  >Rating: {{camera.rating}}</li>
+
+
+
+            <div ng-if='camera.onSale'>
+                <li class="yellow">
+                    Price: {{camera.price | currency: "$"}} ON SALE!
                 </li>
+            </div>
+
+
+            <div ng-if='!camera.onSale'>
+                <li >
+                    Price: {{camera.price | currency: "$"}}
+                </li>
+            </div>
+            <br>
+            <br>
             </ul>
+
+
+
+
         </div>
     </div>
 </body>

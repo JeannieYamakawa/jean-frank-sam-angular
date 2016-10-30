@@ -8,3 +8,7 @@
 .yellow{
     color:goldenrod;
 }
+
+li {
+    list-style-type: none;
+}

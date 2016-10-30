@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+    <script src="main.js" type="text/javascript"></script>
+
+    <title>whatever</title>
+</head>
+
+<body ng-app='secondApp'>
+    <h1>Mad With The Libs</h1>
+    <div ng-controller='newMadLib'>
+
+            <h3>Boy's Name</h3>
+                <input type="text" ng-model = 'allInputFields.name' placeholder = "Enter a boy's name" >
+            <h3>Adjective</h3>
+                <input type="text" ng-model = 'allInputFields.adjective' placeholder = 'Enter an adjective' >
+            <h3>Plural Noun</h3>
+                <input type="text" ng-model = 'allInputFields.plural1'>
+            <h3>Plural Noun</h3>
+                <input type="text" ng-model = 'allInputFields.plural2'>
+            <h3>An Insect, Plural</h3>
+                <input type="text" ng-model = 'allInputFields.insectPlural'>
+            <h3>Plural Noun</h3>
+                <input type="text" ng-model = 'allInputFields.pluralNoun'>
+            <h3>A Verb Ending In "s"</h3>
+                <input type="text" ng-model = 'allInputFields.verb'>
+    <br>
+    <br>
+                <input ng-click="submitClicked()" value = 'generate madlib!' type="submit">
+
+
+
+
+
+    <div id='paragraphDiv' ng-show= "myValue">
+
+            <h3>I'm in love with <span> {{ allInputFields.name | uppercase}} </span>.
+                He's so <span> {{ allInputFields.adjective  | uppercase}} </span>! He has big flat <span> {{ allInputFields.plural1 | uppercase}} </span>, and when our
+                <span>{{ allInputFields.plural2  | uppercase}}</span> meet, I get <span>{{  allInputFields.insectPlural  | uppercase}}</span> in my stomach.
+                I've fallen for him like a ton of <span>{{ allInputFields.pluralNoun  | uppercase}}</span>, and he <span>{{ allInputFields.verb  | uppercase}}</span> for me, too.
+                But I think he's got another girlfriend. What should I do?</h3>
+            <input ng-click='clearClicked()' value = 'Play Again?'>
+
+    </div>
+
+
+    </div>
+
+
+</body>
+</html>

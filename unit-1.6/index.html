@@ -10,6 +10,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="firstApp">
+    <div ng-controller="MyFirstController">
+      <h1>My name is: {{name}}</h1>
+      <input ng-model="name" type="text" placeholder="What is your name">
+    </div>
 
+    <div ng-controller ='ExercisesController'>
+        <h1>My favorite color is: {{ FavColor }}</h1>
+        <h3>Number of seconds in a century: {{ secondsInACentury | number }}</h3>
+        <h3>The current time is: {{rightNow| date: 'fullDate'}} </h3>
+    </div>
 </body>
 </html>

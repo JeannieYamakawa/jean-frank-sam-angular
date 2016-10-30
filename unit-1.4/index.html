@@ -10,6 +10,36 @@
 </head>
 <body ng-app>
 
+    <h3>Boy's Name</h3>
+        <input type="text" ng-model = 'name' placeholder = "Enter a boy's name">
+    <h3>Adjective</h3>
+        <input type="text" ng-model = 'adjective' placeholder = 'Enter an adjective' >
+    <h3>Plural Noun</h3>
+        <input type="text" ng-model = 'plural1'>
+    <h3>Plural Noun</h3>
+        <input type="text" ng-model = 'plural2'>
+    <h3>An Insect, Plural</h3>
+        <input type="text" ng-model = 'insectPlural'>
+    <h3>Plural Noun</h3>
+        <input type="text" ng-model = 'pluralNoun'>
+    <h3>A Verb Ending In "s"</h3>
+        <input type="text" ng-model = 'verb'>
+
+
+    <h1>Mad With The Libs</h1>
+
+    <h3>I'm in love with <span> {{ name | uppercase}} </span>.
+        He's so <span> {{ adjective  | uppercase}} </span>! He has big flat <span> {{ plural1 | uppercase}} </span>, and when our
+        <span>{{ plural2  | uppercase}}</span> meet, I get <span>{{  insectPlural  | uppercase}}</span> in my stomach.
+        I've fallen for him like a ton of <span>{{pluralNoun  | uppercase}}</span>, and he <span>{{ verb  | uppercase}}</span> for me, too.
+        But I think he's got another girlfriend. What should I do?</h3>
+
+
+
+
+
+
+
 <div>{{this}}</div>
 
 

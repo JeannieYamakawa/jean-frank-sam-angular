@@ -13,7 +13,51 @@
 
 
 
-    <body ng-app='app' ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']">
+    <body ng-app='app' >
+
+
+        <h1>Camera Shop</h1>
+        <div ng-controller='cameraController'>
+
+            <select ng-model ='dropMenu' name="dropdown" id="">
+                <option value="price">Price</option>
+                <option value="rating">Rating</option>
+            </select>
+
+            <div ng-repeat = 'camera in cameraInput | orderBy: dropMenu'>
+                <ul>
+                    <h2><li > <strong>{{camera.title}}</strong></li></h2>
+                    <li><img src="{{camera.image}}" alt="" style="width:170px;height:130px;"/></li>
+                    <li>Rating: {{camera.rating}}</li>
+
+
+
+                <div ng-if='camera.onSale'>
+                    <li class="yellow">
+                        Price: {{camera.price | currency: "$"}} ON SALE!
+                    </li>
+                </div>
+
+
+                <div ng-if='!camera.onSale'>
+                    <li >
+                        Price: {{camera.price | currency: "$"}}
+                    </li>
+                </div>
+
+
+
+
+                </ul>
+                <br>
+                <br>
+            </div>
+        </div>
+
+
+
+
+
 
         <div ng-init="names=['Harry', 'Ron', 'Hermione', 'Sirius', 'Hedwig', 'Tonks']" >
             <!-- <ul>
@@ -36,8 +80,8 @@
             </ul>
 
                 <div >
-                    <ul>
-                      <li ng-repeat="number in [1,1,2,5,6,9,9,9] track by $index">
+                    <ul >
+                      <li class = 'numsArray' ng-repeat="number in [1,1,2,5,6,9,9,9] track by $index">
                         {{number}}
                        </li>
                     </ul>
