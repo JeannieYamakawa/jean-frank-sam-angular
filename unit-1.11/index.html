@@ -22,15 +22,15 @@
                         <span id = 'redditHeader' >Reddit</span>
                     </div>
                     <div class='col-xs-3'>
-                        <input ng-click="newPostClicked()"  type='button' value = 'New Post' >
+                        <input ng-click="newPostClicked()"  class = 'btn btn-default' type='button' value = 'New Post' >
                     </div>
                     <div class='col-xs-3'>
-                        <input type="text"  placeholder = 'Search...'>
+                        <input class = 'searchBar'ng-model ='searchBar' type="text"  placeholder = 'Search...'>
                     </div>
                     <div class='col-xs-3'>
                         <span  >Sort By:</span>
 
-                        <select  name="dropdown" ng-model ='dropMenu' >
+                        <select  class="dropdown" name="dropdown" ng-model ='dropMenu' >
                             <option value="" selected hidden />
                             <option value="-date" >Date</option>
                             <option value="-numberOfVotes">Votes</option>
@@ -39,10 +39,9 @@
                     </div>
 
                 </div>
-                <!-- end of nav bar -->
+<!-- end of nav bar -->
 
-
-        <div class='col-xs-12'>
+<!-- hidden new post dropdown div -->
         <div ng-show= "myValue">
             <form name="userForm" novalidate ng-submit = 'userFormSubmit()'>
 
@@ -57,14 +56,6 @@
                     </div>
                 <br>
 
-
-
-
-
-
-
-
-
                 <label for="title">Post Title:</label>
                     <input id = 'title' type="text" name="title" ng-model = 'postInputFields.title'  required ng-minlength=8 ng-maxlength=50>
 
@@ -76,16 +67,30 @@
 
                     <br>
                 <label for="image">Image Address:</label>
-                    <input id = 'image' type="text" ng-model = 'postInputFields.image' required>
+                    <input id = 'image' type="text" name="image" ng-model = 'postInputFields.image' required ng-minlength=8 >
+
+                    <div class="error" ng-show="userForm.image.$dirty && userForm.image.$invalid">
+                         <small class="error" ng-show="userForm.image.$error.required">Post image address is required.</small>
+                         <small class="error" ng-show="userForm.image.$error.minlength">Post image address is required to be at least 5 characters</small>
+                   </div>
+
 
                     <br>
                 <label for="description">Post Description:</label>
                     <input id = 'description' type="text" ng-model = 'postInputFields.description' required>
+
+                    <div class="error" ng-show="userForm.description.$dirty && userForm.description.$invalid">
+                         <small class="error" ng-show="userForm.description.$error.required">Post description is required.</small>
+                         <small class="error" ng-show="userForm.description.$error.minlength">Post description is required to be at least 8 characters</small>
+                         <small class="error" ng-show="userForm.description.$error.maxlength">Post description cannot be longer than 200 characters</small>
+                   </div>
+
                 <br>
-            <button ng-disabled="userForm.$invalid" type="submit" ng-click = 'addPost(postInputFields.title, postInputFields.author, postInputFields.image, postInputFields.description)'> Submit Post </button>
+            <button class = 'btn btn-default'ng-disabled="userForm.$invalid" type="submit" ng-click = 'addPost(postInputFields.title, postInputFields.author, postInputFields.image, postInputFields.description)'> Submit Post </button>
 
             </form>
         </div>
+<!-- end of hidden new post dropdown div -->
 
 
 <!-- ng pluralize count = post.comments.length
@@ -93,12 +98,14 @@ when {'0': '0 comments',
         '1': '1 comment',
         ______
     } -->
+
+<!-- all posts  -->
                 <div class='col-xs-12 '>
 
                     <ul>
 
                         <!-- for each post -->
-                            <li  class = 'panel panel-default'ng-repeat='post in postList.posts | orderBy: dropMenu'>
+                            <li  class = 'panel panel-default'ng-repeat='post in postList.posts | orderBy: dropMenu | filter : searchBar '>
 
                                 <div >
                                     <header class = 'panel panel-title col-xs-12'>
@@ -132,14 +139,72 @@ when {'0': '0 comments',
                                 <main class ='row mainPost'>
                                     <img class = 'col-xs-1' src="{{ post.image }}" alt="cute kitten"/>
 
-                                    <span class = 'col-xs-11'> {{ post.description }}</span>
+                                    <span class = 'col-xs-11 postDesc'> {{ post.description }}</span>
                                 </main>
 
                                 <p class = 'commentRow'>
                                     <span >{{ post.date | date: 'short' }}</span>
-                                    <button class = 'commentButtonPad' ><strong>(View) Comments</strong></button>
-                                    <button class = 'commentButtonPad'><strong>Add Comment</strong></button>
+                                    <button class = 'btn btn-default commentButtonPad' ><strong>(View) Comments</strong></button>
+                                    <button ng-click = 'newCommentClicked()' class = 'btn btn-default commentButtonPad'><strong>Add Comment</strong></button>
                                 </p>
+
+
+
+
+
+
+
+
+
+
+
+                                <div ng-show= "myValueComment">
+                                    <form name="commentForm" novalidate ng-submit = 'commentFormSubmit()'>
+
+                                        <label for="author">Author's Name:</label>
+                                            <input id = 'author' type="text" ng-model = 'post.commentInputFields.author'  name="author" required ng-minlength=3 ng-maxlength=20>
+
+
+                                             <div class="error" ng-show="commentForm.author.$dirty && commentForm.author.$invalid">
+                                                  <small class="error" ng-show="commentForm.author.$error.required">Your name is required.</small>
+                                                  <small class="error" ng-show="commentForm.author.$error.minlength">Your name is required to be at least 3 characters</small>
+                                                  <small class="error" ng-show="commentForm.author.$error.maxlength">Your name cannot be longer than 20 characters</small>
+                                            </div>
+                                        <br>
+
+                                        <label for="title">Text:</label>
+                                            <input id = 'title' type="text" name="commentText" ng-model = 'post.commentInputFields.commentText'  required ng-minlength=2 ng-maxlength=60>
+
+                                            <div class="error" ng-show="commentForm.commentText.$dirty && commentForm.commentText.$invalid">
+                                                 <small class="error" ng-show="commentForm.commentText.$error.required">Comment text is required.</small>
+                                                 <small class="error" ng-show="commentForm.commentText.$error.minlength">Comment text is required to be at least 2 characters</small>
+                                                 <small class="error" ng-show="commentForm.commentText.$error.maxlength">Comment text cannot be longer than 60 characters</small>
+                                           </div>
+                                            <br>
+
+                                    <button class = 'btn btn-default'ng-disabled="commentForm.$invalid" type="submit" ng-click = 'addComment(post.commentInputFields.title, post.commentInputFields.author)'> Submit Post </button>
+
+                                    </form>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                 </div>
 
                             </li>
@@ -148,6 +213,7 @@ when {'0': '0 comments',
 
                     </ul>
                 </div>
-            </div>
+<!-- end of all posts  -->
+
 </body>
 </html>

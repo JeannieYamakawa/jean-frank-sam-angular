@@ -2,16 +2,27 @@ var app = angular.module('firstReddit', ['ngAnimate']);
 
 app.controller('reddit', ['$scope', function($scope){
     $scope.myValue = false;
+    $scope.myValueComment = false;
+
 
     $scope.newPostClicked = function(){
         $scope.myValue = true;
-        $scope.postInputFields ={};
+        $scope.postInputFields = {}; //ensures user is starting with a blank post form
     }
+
+
+    $scope.newCommentClicked = function(){
+        $scope.myValueComment = true;
+        //??not sure if "this" below is correct
+        this.commentInputFields = {}; //ensures user is starting with a blank comment form
+    }
+
     $scope.postList = {};
+
     $scope.postList.posts = [
         {
             title: 'zzpost1 title',
-            author: 'Annie',
+            author: 'Jeannie',
             image: 'http://placekitten.com/200/300',
             description: 'Inani admodum has ne. Ei graeco consulatu splendide quo, duo ne nisl mazim vivendo. Porro choro veniam et his, errem choro nec at, at tale congue veniam sed. Pro ei diam eloquentiam. Ut platonem hendrerit mel, ei probo interesset duo, ei has maluisset torquatos. Porro quidam suavitate eu pri.',
             date: new Date(),
@@ -23,11 +34,12 @@ app.controller('reddit', ['$scope', function($scope){
                 {
                 author: 'Jeannie2',
                 text: 'aww, yes2'
-                    }]
+            }],
+            commentInputFields:{}
     },
         {
         title: 'post2 title',
-        author: 'Leeann',
+        author: 'Jeansey',
         image: 'http://placekitten.com/400/300',
         description: '2she is so cute!',
         date:  new Date(),
@@ -39,8 +51,10 @@ app.controller('reddit', ['$scope', function($scope){
             {
             author: '2Jeannie2',
             text: '2aww, yes2'
-                }]
+        }],
+                commentInputFields:{}
     },
+
     {
     title: 'post3 title',
     author: 'JeanBob',
@@ -55,7 +69,8 @@ app.controller('reddit', ['$scope', function($scope){
         {
         author: '3Jeannie3',
         text: '3aww, yes3'
-            }]
+    }],
+    commentInputFields:{}
         },
 
     ];
@@ -69,13 +84,26 @@ app.controller('reddit', ['$scope', function($scope){
             description: inputDesc,
             date: new Date(),
             numberOfVotes: 0,
-            comments: []
+            comments: [],
+            commentInputFields:{}
         }
         $scope.postList.posts.push(newPost)
-        console.log(newPost, "new Post");
+        // console.log(newPost, "new Post");
         $scope.myValue = false;
-
     };
+
+
+    $scope.addComment = function(usersName, someText){
+        this.commentInputFields = {
+            author: usersName,
+            text: someText
+        };
+        this.post.comments.push(this.commentInputFields)
+        $scope.myValueComment = false;
+    };
+
+
+
 
     $scope.upClicked = function(post){
         post.numberOfVotes++
