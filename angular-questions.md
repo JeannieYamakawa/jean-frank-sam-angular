@@ -1,7 +1,10 @@
 
 Type the three command line commands below:
+
 Admins-MacBook-Pro-4:unit-1.1 admin$ jasmine init
+
 Admins-MacBook-Pro-4:unit-1.1 admin$ npm init
+
 Admins-MacBook-Pro-4:unit-1.1 admin$ touch conf.js
 
 
