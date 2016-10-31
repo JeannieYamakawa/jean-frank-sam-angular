@@ -10,11 +10,11 @@ app.controller('reddit', ['$scope', function($scope){
     $scope.postList = {};
     $scope.postList.posts = [
         {
-            title: 'post1 title',
+            title: 'zzpost1 title',
             author: 'Annie',
             image: 'http://placekitten.com/200/300',
             description: 'Inani admodum has ne. Ei graeco consulatu splendide quo, duo ne nisl mazim vivendo. Porro choro veniam et his, errem choro nec at, at tale congue veniam sed. Pro ei diam eloquentiam. Ut platonem hendrerit mel, ei probo interesset duo, ei has maluisset torquatos. Porro quidam suavitate eu pri.',
-            date: '2016-1-31T03:09:44.747Z',
+            date: new Date(),
             numberOfVotes: 0,
             comments: [{
                 author: 'Jeannie',
@@ -30,7 +30,7 @@ app.controller('reddit', ['$scope', function($scope){
         author: 'Leeann',
         image: 'http://placekitten.com/400/300',
         description: '2she is so cute!',
-        date: '2016-4-31T03:09:44.747Z',
+        date:  new Date(),
         numberOfVotes: -4,
         comments: [{
             author: '2Jeannie',
@@ -46,7 +46,7 @@ app.controller('reddit', ['$scope', function($scope){
     author: 'JeanBob',
     image: 'http://placekitten.com/300/300',
     description: 'Lorem ipsum dolor sit amet, eam decore graeco singulis ei, sit te nihil quando. Erant nostro deleniti his et, eam integre vocibus deleniti cu. Mazim eirmod audire ei vis, et laudem eleifend vulputate qui. Id sit nostrud impedit, appareat pericula petentium ut mei, feugiat albucius mentitum qui at.',
-    date: '2016-2-31T03:09:44.747Z',
+    date:  new Date(),
     numberOfVotes: 6,
     comments: [{
         author: '3Jeannie',

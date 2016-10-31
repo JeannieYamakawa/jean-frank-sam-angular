@@ -2,47 +2,38 @@ body{
     font-family: Arial;
 }
 input.ng-invalid {
-  border: 1px solid red;
+  border: 2px solid red;
 }
 input.ng-valid {
-  border: 1px solid green;
+  border: 2px solid green;
 }
-
-.style-inline{
-    dislay: inline-block;
-    margin-left: 4vw;
+.navbar{
+margin-bottom: 2vh;
 }
-
+img{
+    width: 30%;
+  height: 200px;
+    margin: auto;
+  position: relative;
+}
+.author{
+    float: right;
+    margin: 2vh;
+}
+.mainPost{
+    padding: 1vh;
+}
+.commentRow{
+    margin-left: 1vw;
+}
 ul {
     list-style-type: none;
 }
-#redditHeader{
-    font-size: 3vh;
-    font-weight: bold;
-    margin: 2vw;
-
+.commentButtonPad{
+    margin-left: 1vw;
+    padding: 1vh;
 }
 
-.postDiv{
-    background-color: lightgray;
-    padding: 2vh;
-    margin: 2vw;
-    height: auto;
-    width: auto;
-}
-
-.navBar{
-    background-color: lightgray;
-    padding: 2vh;
-    margin: 1vh;
-}
-
-.titleInline{
-    display: inline-block;
-}
-.commentBarMargin{
-    margin-left: 2vw;
-}
 #upArrow{
     font-size: 4vh;
     font-weight: bolder;
@@ -52,6 +43,17 @@ ul {
     font-weight: bolder;
 
 }
+form{
+    margin: 2vh;
+}
+
+#upArrow:hover {
+    cursor: pointer;
+}
+#downArrow:hover {
+    cursor: pointer;
+}
+
 .red{
     color: red;
     font-weight: bold;

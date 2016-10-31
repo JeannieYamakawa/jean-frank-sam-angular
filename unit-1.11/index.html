@@ -17,98 +17,137 @@
             <div ng-controller = 'reddit'>
 
                 <!-- nav bar -->
-                <div class = 'navBar'>
-                    <span id = 'redditHeader'class = 'style-inline' >Reddit</span>
+                <div class = 'well well-lg navbar'>
+                    <div class='col-xs-3'>
+                        <span id = 'redditHeader' >Reddit</span>
+                    </div>
+                    <div class='col-xs-3'>
+                        <input ng-click="newPostClicked()"  type='button' value = 'New Post' >
+                    </div>
+                    <div class='col-xs-3'>
+                        <input type="text"  placeholder = 'Search...'>
+                    </div>
+                    <div class='col-xs-3'>
+                        <span  >Sort By:</span>
 
-                    <input ng-click="newPostClicked()" class = 'style-inline button' type='button' value = 'New Post' >
-                    <input type="text" class = 'style-inline' placeholder = 'Search...'>
-                    <span class = 'style-inline' >Sort By:</span>
+                        <select  name="dropdown" ng-model ='dropMenu' >
+                            <option value="" selected hidden />
+                            <option value="-date" >Date</option>
+                            <option value="-numberOfVotes">Votes</option>
+                            <option value="title">Title</option>
+                        </select>
+                    </div>
 
-                    <select  name="dropdown" ng-model ='dropMenu' >
-                        <option value="" selected hidden />
-                        <option value="-date" >Date</option>
-                        <option value="-numberOfVotes">Votes</option>
-                        <option value="title">Title</option>
-                    </select>
                 </div>
                 <!-- end of nav bar -->
+
+
+        <div class='col-xs-12'>
         <div ng-show= "myValue">
-            <form name="userForm" novalidate ng-submit = 'userForm($valid)'>
+            <form name="userForm" novalidate ng-submit = 'userFormSubmit()'>
 
                 <label for="author">Author's Name:</label>
-                    <input id = 'author' type="text" ng-model = 'postInputFields.author'  required ng-minlength=3 ng-maxlength=20>
-                <label for="title">Title:</label>
-                    <input id = 'title' type="text" ng-model = 'postInputFields.title'  required>
+                    <input id = 'author' type="text" ng-model = 'postInputFields.author'  name="author" required ng-minlength=3 ng-maxlength=20>
+
+
+                     <div class="error" ng-show="userForm.author.$dirty && userForm.author.$invalid">
+                          <small class="error" ng-show="userForm.author.$error.required">Your name is required.</small>
+                          <small class="error" ng-show="userForm.author.$error.minlength">Your name is required to be at least 3 characters</small>
+                          <small class="error" ng-show="userForm.author.$error.maxlength">Your name cannot be longer than 20 characters</small>
+                    </div>
+                <br>
+
+
+
+
+
+
+
+
+
+                <label for="title">Post Title:</label>
+                    <input id = 'title' type="text" name="title" ng-model = 'postInputFields.title'  required ng-minlength=8 ng-maxlength=50>
+
+                    <div class="error" ng-show="userForm.title.$dirty && userForm.title.$invalid">
+                         <small class="error" ng-show="userForm.title.$error.required">Post title is required.</small>
+                         <small class="error" ng-show="userForm.title.$error.minlength">Post title is required to be at least 8 characters</small>
+                         <small class="error" ng-show="userForm.title.$error.maxlength">Post title cannot be longer than 50 characters</small>
+                   </div>
+
+                    <br>
                 <label for="image">Image Address:</label>
                     <input id = 'image' type="text" ng-model = 'postInputFields.image' required>
+
+                    <br>
                 <label for="description">Post Description:</label>
                     <input id = 'description' type="text" ng-model = 'postInputFields.description' required>
+                <br>
+            <button ng-disabled="userForm.$invalid" type="submit" ng-click = 'addPost(postInputFields.title, postInputFields.author, postInputFields.image, postInputFields.description)'> Submit Post </button>
 
-            <button ng-click = 'addPost(postInputFields.title, postInputFields.author, postInputFields.image, postInputFields.description)'> Submit Post </button>
             </form>
+        </div>
 
-             <p ng-show="userForm.author.$error.minlength">Username is too short.</p>
 
 <!-- ng pluralize count = post.comments.length
 when {'0': '0 comments',
         '1': '1 comment',
         ______
     } -->
-
-
-        </div>
-        <div ng-show = 'userForm.postInputFields.author.$invalid'>
-           asdkjlasjdlkasjdlkajsld
-       </div>
-
+                <div class='col-xs-12 '>
 
                     <ul>
 
                         <!-- for each post -->
-                            <li  ng-repeat='post in postList.posts | orderBy: dropMenu'>
-                                <div class = 'postDiv'>
-                                <p class = 'titleInline'><strong>{{ post.title }}</strong></p>
-                                <span>By: {{ post.author }}</span>
-                                <span ng-click="upClicked(post)" id = 'upArrow'>&#65514;</span>
+                            <li  class = 'panel panel-default'ng-repeat='post in postList.posts | orderBy: dropMenu'>
+
+                                <div >
+                                    <header class = 'panel panel-title col-xs-12'>
+                                        <strong>{{ post.title }}  | </strong>
+
+                                        <span ng-click="upClicked(post)" id = 'upArrow'>&#65514;</span>
 
 
+                                        <span ng-if='post.numberOfVotes<0'>
+                                            <span class = 'red'>votes:{{ post.numberOfVotes }}</span>
+                                        </span>
+                                        <span ng-if='post.numberOfVotes==0'>
+                                            <span class = 'gray'>votes:{{ post.numberOfVotes }}</span>
+                                        </span>
+                                        <span ng-if='post.numberOfVotes>0'>
+                                            <span class = 'green'>votes:{{ post.numberOfVotes }}</span>
+                                        </span>
 
 
-                                <!-- <span>votes:{{ post.numberOfVotes }}</span> -->
+                                        <span ng-click="downClicked(post)" id = 'downArrow'>&#65516;</span>
+
+                                        <span class = 'author' >By: {{ post.author }}</span>
+                                    </header>
 
 
-
-                                <span ng-if='post.numberOfVotes<0'>
-                                    <span class = 'red'>votes:{{ post.numberOfVotes }}</span>
-                                </span>
-                                <span ng-if='post.numberOfVotes==0'>
-                                    <span class = 'gray'>votes:{{ post.numberOfVotes }}</span>
-                                </span>
-                                <span ng-if='post.numberOfVotes>0'>
-                                    <span class = 'green'>votes:{{ post.numberOfVotes }}</span>
-                                </span>
-
-
-                                <span ng-click="downClicked(post)" id = 'downArrow'>&#65516;</span>
 
 
 
                                 <br>
-                                <img src="{{ post.image }}" alt="cute kitten" style="width:170px;height:130px;"/>
 
-                                <span> {{ post.description }}</span>
+                                <main class ='row mainPost'>
+                                    <img class = 'col-xs-1' src="{{ post.image }}" alt="cute kitten"/>
 
-                                <p >
+                                    <span class = 'col-xs-11'> {{ post.description }}</span>
+                                </main>
+
+                                <p class = 'commentRow'>
                                     <span >{{ post.date | date: 'short' }}</span>
-                                    <span class = 'commentBarMargin'><strong>(View) Comments</strong></span>
-                                    <span class = 'commentBarMargin'><strong>Add Comment</strong></span>
+                                    <button class = 'commentButtonPad' ><strong>(View) Comments</strong></button>
+                                    <button class = 'commentButtonPad'><strong>Add Comment</strong></button>
                                 </p>
                                 </div>
+
                             </li>
                         <!-- end of each post -->
 
 
                     </ul>
+                </div>
             </div>
 </body>
 </html>
