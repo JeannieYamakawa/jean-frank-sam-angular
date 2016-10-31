@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Document</title>
+</head>
+<body ng-app='formApp'>
+    <div ng-controller='formController'>
+        <form name="signupForm" novalidate ng-submit="signupForm()">
+<!-- firstName -->
+              <div class="row">
+                    <div class="large-12 columns">
+                        <label>Your name</label>
+                            <input type="text"
+                                placeholder="Name"
+                                name="name"
+                                ng-model="signup.name"
+                                ng-minlength=3
+                                ng-maxlength=20 required />
+
+                         <div class="error" ng-show="signupForm.name.$dirty && signupForm.name.$invalid">
+                              <small class="error" ng-show="signupForm.name.$error.required">Your name is required.</small>
+                              <small class="error" ng-show="signupForm.name.$error.minlength">Your name is required to be at least 3 characters</small>
+                              <small class="error" ng-show="signupForm.name.$error.maxlength">Your name cannot be longer than 20 characters</small>
+                        </div>
+
+                    </div>
+              </div>
+<!-- email (uses input type email) -->
+              <div class="row">
+                <div class="large-12 columns">
+                  <label>Your email</label>
+                  <input type="email" placeholder="Email" name="email" ng-model="signup.email" ng-minlength=3 ng-maxlength=20 required />
+                      <div class="error-container" ng-show="signupForm.email.$dirty && signupForm.email.$invalid">
+                            <small class="error" ng-show="signupForm.email.$error.required">Your email is required.</small>
+                            <small class="error" ng-show="signupForm.email.$error.minlength">Your email is required to be at least 3 characters</small>
+                            <small class="error" ng-show="signupForm.email.$error.email">That is not a valid email. Please input a valid email.</small>
+                            <small class="error" ng-show="signupForm.email.$error.maxlength">Your email cannot be longer than 20 characters</small>
+                      </div>
+                </div>
+            </div>
+
+<!-- username -->
+            <div class="large-12 columns">
+              <label>Username</label>
+                <input  type="text" placeholder="Desired username" name="username" ng-model="signup.username" ng-minlength=3 ng-maxlength=20 required />
+                    <div class="error-container" ng-show="signup_form.username.$dirty && signup_form.username.$invalid">
+                        <small class="error" ng-show="signup_form.username.$error.required">Please input a username</small>
+                        <small class="error" ng-show="signup_form.username.$error.minlength">Your username is required to be at least 3 characters</small>
+                        <small class="error" ng-show="signup_form.username.$error.maxlength">Your username cannot be longer than 20 characters</small>
+                        <small class="error" ng-show="signup_form.username.$error.unique">That username is taken, please try another</small>
+                    </div>
+            </div>
+
+
+            <button id='submitButton' type="submit" ng-disabled="signupForm.$invalid" class="button radius">Submit</button>
+        </form>
+
+    </div>
+</body>
+</html>
