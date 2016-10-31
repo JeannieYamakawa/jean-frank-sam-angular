@@ -23,7 +23,9 @@ Now, write in your package.json scripts object: "test": "protractor conf.js"
 
 
 open new terminal tab in the same folder and type: webdriver-manager start
+
 open new terminal tab in the same folder and type: python -m SimpleHTTPServer
+
 check to see that localhost8000 has a web page it's rendering in the browser(do a booyah test in the html)
 
 
