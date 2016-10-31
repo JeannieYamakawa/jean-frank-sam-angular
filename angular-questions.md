@@ -7,7 +7,7 @@ Admins-MacBook-Pro-4:unit-1.1 admin$ npm init
 
 Admins-MacBook-Pro-4:unit-1.1 admin$ touch conf.js
 
-inside of the spec folder, touch spec.js
+inside of the spec folder, touch unit1.8-spec.js
 
 
 Now: copy in the configuration from the protractor website link to conf.js. Should look like below.
