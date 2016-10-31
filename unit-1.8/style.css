@@ -1,0 +1,33 @@
+#player1ScoreDiv{
+    background-color: gray;
+    height: 15vh;
+    width: 10vw;
+    display: inline-block;
+    color: white;
+}
+#player2ScoreDiv{
+    background-color: gray;
+    height: 15vh;
+    width: 10vw;
+    display: inline-block;
+    color: white;
+}
+
+
+
+
+.score1{
+    font-size: 8vh;
+    color: white;
+}
+.score2{
+    font-size: 8vh;
+    color: white;
+}
+.winner{
+    background-color: red;
+    height: 15vh;
+    width: 10vw;
+    display: inline-block;
+    color: white;
+}

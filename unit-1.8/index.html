@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" charset="UTF-8"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app="unit8">
+    <div ng-controller="myController">
+      <h1>booyah</h1>
+
+
+        <button ng-click="pickRandomNumber()">Pick Random Number</button>
+      <h3> The number is: {{view.number}} </h3>
+      <br>
+      <br>
+
+
+
+      <input type="text" class= 'reverse-input' ng-model = 'container.myWord'>
+      <button class = 'button' ng-click= 'wordReverser(container.myWord)' >Click to reverse text!</button>
+
+      <h3 class='reversed-word'> {{ container.myReversed }} </h3>
+
+
+
+              <div ng-click= 'incrementPlayer1()' id = 'player1ScoreDiv' ng-class='{"player1ScoreDiv": (pingPong.player1score < 11) ,"winner": (pingPong.player1score >= 11)}'>Player 1
+                  <div class ='score1'> {{ pingPong.player1score }} </div>
+                  <div ng-show='pingPong.player1serve'>Serving!</div>
+              </div>
+              
+              <div ng-click= 'incrementPlayer2()' id = 'player2ScoreDiv' ng-class='{"player2ScoreDiv": (pingPong.player2score < 11) ,"winner": (pingPong.player2score >= 11)}'>Player2
+                  <div class ='score2'>  {{ pingPong.player2score }} </div>
+                  <div ng-show='pingPong.player2serve'> Serving!</div>
+              </div>
+
+
+
+
+
+    </div>
+</body>
+</html>

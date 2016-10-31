@@ -33,23 +33,27 @@
                 </div>
                 <!-- end of nav bar -->
         <div ng-show= "myValue">
-            <form name="userForm">
+            <form name="userForm" novalidate ng-submit = 'userForm($valid)'>
 
-            <label for="author">Author's Name:</label>
-            <input id = 'author' type="text" ng-model = 'postInputFields.author'  required ng-minlength=3 ng-maxlength=20>
-            <label for="title">Title:</label>
-            <input id = 'title' type="text" ng-model = 'postInputFields.title'  required>
-            <label for="image">Image Address:</label>
-            <input id = 'image' type="text" ng-model = 'postInputFields.image' required>
-            <label for="description">Post Description:</label>
-            <input id = 'description' type="text" ng-model = 'postInputFields.description' required>
+                <label for="author">Author's Name:</label>
+                    <input id = 'author' type="text" ng-model = 'postInputFields.author'  required ng-minlength=3 ng-maxlength=20>
+                <label for="title">Title:</label>
+                    <input id = 'title' type="text" ng-model = 'postInputFields.title'  required>
+                <label for="image">Image Address:</label>
+                    <input id = 'image' type="text" ng-model = 'postInputFields.image' required>
+                <label for="description">Post Description:</label>
+                    <input id = 'description' type="text" ng-model = 'postInputFields.description' required>
 
             <button ng-click = 'addPost(postInputFields.title, postInputFields.author, postInputFields.image, postInputFields.description)'> Submit Post </button>
             </form>
 
              <p ng-show="userForm.author.$error.minlength">Username is too short.</p>
 
-
+<!-- ng pluralize count = post.comments.length
+when {'0': '0 comments',
+        '1': '1 comment',
+        ______
+    } -->
 
 
         </div>
