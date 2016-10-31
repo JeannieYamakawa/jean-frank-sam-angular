@@ -1,8 +1,13 @@
 
 Type the three command line commands below:
+
 Admins-MacBook-Pro-4:unit-1.1 admin$ jasmine init
+
 Admins-MacBook-Pro-4:unit-1.1 admin$ npm init
+
 Admins-MacBook-Pro-4:unit-1.1 admin$ touch conf.js
+
+inside of the spec folder, touch unit1.8-spec.js
 
 
 Now: copy in the configuration from the protractor website link to conf.js. Should look like below.
@@ -23,7 +28,9 @@ Now, write in your package.json scripts object: "test": "protractor conf.js"
 
 
 open new terminal tab in the same folder and type: webdriver-manager start
+
 open new terminal tab in the same folder and type: python -m SimpleHTTPServer
+
 check to see that localhost8000 has a web page it's rendering in the browser(do a booyah test in the html)
 
 
