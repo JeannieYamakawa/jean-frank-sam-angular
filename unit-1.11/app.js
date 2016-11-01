@@ -13,9 +13,12 @@ app.controller( 'reddit', [ '$scope', function( $scope ) {
 
 
     $scope.newCommentClicked = function() {
-        $scope.myValueComment = true;
+        $scope.myValueComment = !$scope.myValueComment;
         //??not sure if "this" below is correct
-        this.commentInputFields = {}; //ensures user is starting with a blank comment form
+        console.log(this.post.commentInputFields);
+        this.post.commentInputFields = {}; //ensures user is starting with a blank comment form
+        console.log(this.post.commentInputFields);
+
     }
 
     $scope.postList = {};
